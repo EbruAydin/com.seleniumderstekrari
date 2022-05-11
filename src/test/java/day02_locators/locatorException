@@ -1,0 +1,10 @@
+
+                            ======LOCATOR EXCEPTION======
+                            LOCATOR ICIN UNIQUE OLMASI ZORUNLUDUR!!1
+By.id() ile ilgili exception--->NoSuchElementException  bunun nedeni yanlis id locate edilmesidir. bu hata geldiginde
+                                hata veren satirdaki locator gozden gecirilmelidir.
+
+By.className()--->oldugu gibi copy paste edilmeli, bosluga duyarlidir. DIKKKATTTT!!!
+By.linkText()---->oldugu gibi copy paste edilmeli, bosluga, buyuk kucuk harfe, her seye duyarlidir!!!
+
+By.tagName()--->tagName "input"tur ve cok kullanilan bir yontem degildir bu da. class ismi gibi birden fazla olur.
