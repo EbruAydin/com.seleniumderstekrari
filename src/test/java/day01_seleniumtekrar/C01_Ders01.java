@@ -8,7 +8,7 @@ public class C01_Ders01 {
 
         System.setProperty("webdriver.chrome.driver","src/resources/drivers/chromedriver.exe");
         WebDriver driver=new ChromeDriver();
-        //driver.manage().window().maximize();//ekrani buyuk yapmaya calsiri
+        //driver.manage().window().maximize();//window'un buyuk ekran olmasini saglar
 
 
         driver.get("https://www.amazon.com");
