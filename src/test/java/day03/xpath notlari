@@ -1,0 +1,27 @@
+
+=================================xPath Notlar==================================================
+
+WebElement'in 3 bileseni:
+1-tag name --->input
+2-attribute---->type, id, value, name, autocomplete, placeholder, class
+3-attribute value---->type 'text', id 'twotabsearchtextbox' (tirnak icerisinde olanlar att.value)
+
+Bu 3 elementi birlikte kullanarak her bir webelement icin unique sonuclar veren bircok xpath yazilir
+
+Relative xpath yazmak icin bu 3 bileseni agagidaki gibi bir araya getirerek unique relative xpath olusturdugumuz
+            //tagName[@attributeismi='attributeValue']
+
+Genel olarak 3 bilesen kullanilir ancak bazen daha az bilesen ile de yazmak yeterli olur
+
+Sadece TAG NAME kullanarak xpath yazmak:
+            driver.findElement(By.xpath("//input");
+
+Tag name fark etmeksizin attribute ismi ve attribute value kullanarak xpath yazmak:
+            driver.findElement(By.xpath("//*[@type='text']"));
+
+Attribute name fark etmeksizin tag name ve attribute value kullanarak xpath yazmak:
+            driver.findElement(By.xpath("//input[@*='text']"));
+
+Attribute value fark etmeksizin tag name ve attribute ismi kullanarak xpath yazmak:
+            driver.findElement(By.xpath("//input[@type]"));
+

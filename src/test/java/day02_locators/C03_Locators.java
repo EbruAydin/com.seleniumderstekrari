@@ -1,5 +1,6 @@
 package day02_locators;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,7 +25,7 @@ public class C03_Locators {
 3. Sayfada kac tane link oldugunu bulun.
      */
 
-        System.setProperty("webdriver.chrome.driver", "src/resources/drivers/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));

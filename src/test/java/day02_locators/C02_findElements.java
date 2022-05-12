@@ -25,9 +25,23 @@ public class C02_findElements {
 
         System.out.println("sayfadaki list sayisi : " +elementListesi.size());
 
+
+        //forEach ile cozum
+        System.out.println("forEach ile cozum  : ");
+        System.out.println("\n=====================");
         for (WebElement each:elementListesi) {
             System.out.println("elementlerin textleri :" + each.getText());
         }
+
+
+
+        //lambda ile cozumu
+        System.out.println("\nLambda ile cozumu");
+        System.out.println("\n=====================");
+
+        elementListesi.stream().
+                map(WebElement::getText).
+                forEach(System.out::println);
 
         driver.close();
     }

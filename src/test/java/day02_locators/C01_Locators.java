@@ -26,13 +26,16 @@ public class C01_Locators {
 
         /*
         html kodlarinda genelde id kullaniriz cunku buyuk olasilikla unique'tir.
-        unique degilse de unique olani bulmak gerekir locator'a yazacagimizin
+        unique degilse de unique olani bulmak gerekir
+
+        locator'a yazacagimizin
         kesinlikle unique olmasi gerekir.
          */
 
         //Amazon'a gidip nutella aratalim
         /*
-        bu task'ta demek istedigi aramaKutusunu bulmak, onu locate etmek ve bir WebElement'e atamak.
+        bu task'ta demek istedigi aramaKutusunu bulmak, onu locate etmek ve bir WebElement'e atamak gerekir
+
         locate edereken 3 adim vardi findElement() kullanip
         icerisine (By.LocateName("....")) yazmak
         ve son olarak da WebElement'e atamak.
@@ -49,8 +52,10 @@ public class C01_Locators {
                                                                                  //WebElement'e atadik
 
        // WebElement aramaKutusu=driver.findElement(By.name("field-keywords")); CALISTI
+
         /*
         WebElement aramaKutusu=driver.findElement(By.className("nav-search-field "));CALISMADI
+
         bunu yaptigimizda olmadi mesela ama burada (ilerleyen zamanda daha detayli gorecegiz) cozum
         bulacagiz. Bu locater calismaz ise alternatif locator'lar denemeliyiz. Bunda israrci olmanin
         manasi yoktur. Mesela id,name,className gibi

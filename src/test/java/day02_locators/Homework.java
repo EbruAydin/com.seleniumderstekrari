@@ -29,14 +29,27 @@ public class Homework {
         driver.get("https://www.amazon.com/");
         //2-Search "city bike"
         WebElement searchBox=driver.findElement(By.id("twotabsearchtextbox"));
-        searchBox.sendKeys("city bike");
+        searchBox.sendKeys("city bike" +Keys.ENTER);
+
         //        3-Amazon'da goruntulenen ilgili sonuclarin sayisini yazdirin
-        List<WebElement> goruntulenenSonuclarListesi=driver.findElements(By.tagName("a"));
-        System.out.println(goruntulenenSonuclarListesi.size());
+        //WebDriver aramaSonucu=driver.findElement(By.xpath());
+
 
         //        4-"Shopping'e tiklayin
-        WebElement shopping=driver.findElement(By.className("nav-cart-count nav-cart-0 nav-progressive-attribute nav-progressive-content"));
-        shopping.click();
+
+
         //        5-Sonra karsiniz cikan ilk sonucun resmine tiklayin
+
+        /*
+        WebElement aramaSonuc = driver.findElement(By.xpath("//*[@id=\"search\"]/span/div/h1/div/div[1]/div/div/span[1]"));
+        String[] sonucTextArrays = aramaSonuc.getText().split(" ");
+        System.out.println("İlgili Arama Sonucu : " + sonucTextArrays[sonucTextArrays.length-3]);
+        WebElement ilkUrun = driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[1]/div/span[3]/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div[1]/h2/a"));
+        ilkUrun.click();
+​
+​
+        Thread.sleep(5000);
+        driver.close();
+         */
     }
 }
