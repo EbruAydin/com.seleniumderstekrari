@@ -1,6 +1,9 @@
 
 =================================xPath Notlar==================================================
 
+Absolute xpath yerine Relative xpath tercih edilir cunku hata alma olasiligi daha dusuktur
+mesela bazen html kodlarinda id,name,link olamayabiliyor bunlar olmadigi zaman ozellikle xpath devreye girmis
+oluyor.
 WebElement'in 3 bileseni:
 1-tag name --->input
 2-attribute---->type, id, value, name, autocomplete, placeholder, class
