@@ -1,10 +1,20 @@
 
-                            ======LOCATOR EXCEPTION======
+                            ======LOCATOR EXCEPTION ve BAZI ONEMLI BILGILER======
                             LOCATOR ICIN UNIQUE OLMASI ZORUNLUDUR!!1
 By.id() ile ilgili exception--->NoSuchElementException  bunun nedeni yanlis id locate edilmesidir. bu hata geldiginde
                                 hata veren satirdaki locator gozden gecirilmelidir.
 
+By.name()--->Name ve value unique ise bu method kullanilabilinir.
+
 By.className()--->oldugu gibi copy paste edilmeli, bosluga duyarlidir. DIKKKATTTT!!!
 By.linkText()---->oldugu gibi copy paste edilmeli, bosluga, buyuk kucuk harfe, her seye duyarlidir!!!
 
-By.tagName()--->tagName "input"tur ve cok kullanilan bir yontem degildir bu da. class ismi gibi birden fazla olur.
+By.tagName()---><div>,<a>,<input> gibi tag'ler ile kullanilir
+                 ve cok kullanilan bir yontem degildir bu da. class ismi gibi birden fazla olur.
+                 ANCAK kullanilmak istendiginde birden fazla oge dondureceginden findElements() methodu ile kullanilir.
+                 OR:kullandigimiz bir sayfadaki tum linkleri kullanmak icin By.tagName("a") kullaniriz.
+                 Bu linkleri yazdirmak istersek de foreach kullanarak, sout icerisinde each.gettext() yapariz.
+
+driver.findElements()--->bu bize elementler getirir, bu nedenle de List'e atanir, return type da WebElement'tir.
+                     ====>NoSuchElementException verMEZ. Bos bir liste dondurur.
+                     icindeki elemenalara index veya iterator ile ulasilabilinir. findElement()'te DIREK ulasilir.
