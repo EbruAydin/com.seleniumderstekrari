@@ -1,0 +1,38 @@
+Maven'i otomatik olarak kullanabilmek icin izlenecek yollar:
+
+/gerekli islemleri oncelikle pom.xml sayfasinda yapiyoruz yani sol tarafta altta gorunen M (Maven) sembolu olan
+
+sayfa icerisinde
+/<project></project> arasinda olacak sekilde en sona <dependencies></dependencies> aciyoruz. Otomatik cikiyor bu zaten
+
+bundan sonrasinda---> https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.1.3
+ webadressindeki arama cubugunda ILK OLARAK bonigarcia webdrivermanager ariyoruz ve daha sonrasinda
+en guncel ve en cok kullanilanin mesela 5.0.1 ise bu rakamin uzerinde tikliyoruz, cikan ekranin altinda kutucuk olacak
+bilgiler var icersinde o kutuya tiklayinca otomatik secili oluyor ve biz de ctrl+c diyerek kopyaliyoruz
+OR><dependencies>
+           <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+           <dependency>
+               <groupId>io.github.bonigarcia</groupId>
+               <artifactId>webdrivermanager</artifactId>
+               <version>5.1.0</version>
+           </dependency>
+bunu onceden olusturdugumuz <dependencies></dependencies> arasinda paste ediyoruz.
+
+IKINCI OLARAK ayni websitesinde tekrar search kisminda selenium java ariyoruz ve cikan ekranda ilkini seciyoruz
+daha sonrasinda en guncel olani tiklayarak, sayfasnin altinda olan kutucuk iceriisneki bilgiye tiklayinca secili oluyor
+copy yapiyoruz
+bunu onceden olusturdugumuz <dependencies></dependencies> arasinda paste ediyoruz.
+
+ilk defa denedigimizde kirmizi oluyor bunu da Inteljj sayfamizin sag ust tarafinda marven isreti var, onu tiklayarak
+guncelliyor, download ediyor kutuphaneyi.
+
+sonra test kisminda java iceirisinda yeni package, yeni class acarak
+once main method ardinda da alttakini yaziyoruz.
+
+  *******   WebDriverManager.chromedriver().setup();
+            WebDriver driver=new ChromeDriver();
+
+  Boylece daha once yazdigimiz
+  System.setProperties("webdriver.chrome.driver","path"); yazmaya gerek kalmiyor.
+
+

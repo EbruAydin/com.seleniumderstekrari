@@ -95,7 +95,6 @@ public class C03_Locators {
         }
 
 
-
         driver.close();
 
     }
