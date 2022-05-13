@@ -28,3 +28,20 @@ Attribute name fark etmeksizin tag name ve attribute value kullanarak xpath yazm
 Attribute value fark etmeksizin tag name ve attribute ismi kullanarak xpath yazmak:
             driver.findElement(By.xpath("//input[@type]"));
 
+============================Relative xpath text kullanimi=====================================
+*Bazen attribute bagli olamadan sadece webElement icinde bulunan text kullanilabilir
+
+        Exact text(belirli bir text) ile element bulma:
+
+                    driver.findElement(By.xpath("//tagname[='text name']"));
+                    driver.findElement(By.xpath("//*[='text name']"));
+                    driver.findElement(By.xpath("//*[text()='exact text with extra space and all']"));
+
+        Belirli bir metni iceren bir ogeyi bulmak icin sunlari kullanabiliriz:
+
+                    driver.findElement(By.xpath("//*[contains(text(), 'piece of text'))]"));
+
+* Tek attribute ile unique bir sonuca ulasamaz isek birden fazla attribute yazabiliriz
+
+                    driver.findElement(By.xpath("//div[@id='logo' or class='flex-col logo']"));
+                    driver.findElement(By.xpath("//div[@id='logo' and class='flex-col logo']"));

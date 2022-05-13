@@ -1,0 +1,19 @@
+
+===================================cssSelector notlari==========================================
+
+Css selector xpath'e benzer ve 3 yolla yapilabilir:
+
+1-css=tagName[attribute name='value'];
+
+            driver.findElement(By.cssSelector("input[name='session[password]]'"));
+
+2-css="tagName#idValue" veya sadece css="#idValue"==>SADECE id value ile CALISIR
+
+            driver.findElement(By.cssSelector("input#session_password"));
+
+3-css="tagName.classValue" veya sadece css=".classValue"===>SADECE class value ile CALISIR
+
+            driver.findElement(By.cssSelector(".form-control"));
+
+
+====NOT ===>XPATH DAHA TERCIH EDILENDIR BURADA INDEX GORUNMEDIGI ICIN ISLEM YAPMAK SINIRLI OLUYOR!

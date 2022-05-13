@@ -18,3 +18,17 @@ By.tagName()---><div>,<a>,<input> gibi tag'ler ile kullanilir
 driver.findElements()--->bu bize elementler getirir, bu nedenle de List'e atanir, return type da WebElement'tir.
                      ====>NoSuchElementException verMEZ. Bos bir liste dondurur.
                      icindeki elemenalara index veya iterator ile ulasilabilinir. findElement()'te DIREK ulasilir.
+
+
+==================================WebElement Get Methodlari===========================
+webElement.gettext()--->webElement uzerindeki yaziyi getirir
+webElement.getAttribute("Attribute ismi")--->Ismi getirilen attribute'in degerini getirir
+webElement.getTagName()--->webElement'in tag ismini getirir
+
+==================================WebElement Is Methodlari===========================
+webElement.isEnable()----->webElement erisilebilir ise true yoksa false doner
+webElement.isDisplayed()--->webElement gorunur ise true yoksa false doner
+webElement.isSelected()---->webElement secili ise true yoksa false doner
+
+
+//UnexpectedTagNameException: boyle bir hata aldim

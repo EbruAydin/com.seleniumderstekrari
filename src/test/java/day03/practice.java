@@ -30,6 +30,7 @@ public class practice {
         //a. Verilen web sayfasına gidin. http://a.testaddressbook.com/sign_in
 
         driver.get("http://a.testaddressbook.com/sign_in");
+
         //    b. Locate email textbox
         //    c. Locate password textbox ve
         //    d. Locate signin button
@@ -37,13 +38,17 @@ public class practice {
         //        i. Username : testtechproed@gmail.com
         //        ii. Password : Test1234!
 
-        //Locate ile Cozum
+        /*
+        Locate ile Cozum
+        =================
         WebElement emailTextBox=driver.findElement(By.id("session_email"));
         WebElement passwordTextBox=driver.findElement(By.id("session_password"));
         WebElement signInButonu=driver.findElement(By.name("commit"));
         emailTextBox.sendKeys("testtechproed@gmail.com");
         passwordTextBox.sendKeys("Test1234!");
         signInButonu.click();
+
+         */
 
         /*
         xpath ile cozum
@@ -58,6 +63,13 @@ public class practice {
 
 
         //css locater kismi eksik
+
+        WebElement emailTextBox=driver.findElement(By.cssSelector("input#session_email"));
+        WebElement passwordTextBox=driver.findElement(By.cssSelector("#session_password"));
+        WebElement signInButonu=driver.findElement(By.cssSelector("input[name='commit']"));
+        emailTextBox.sendKeys("testtechproed@gmail.com");
+        passwordTextBox.sendKeys("Test1234!");
+        signInButonu.click();
 
         driver.close();
 
