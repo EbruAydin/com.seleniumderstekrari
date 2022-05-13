@@ -56,25 +56,43 @@ public class C01_TekrarTesti {
          */
         //bir defa kullanacagimiz ve click hemen ardindan istendigi icin kisa yolu tercih ettim:
         driver.findElement(By.xpath("(//*[text()='Gift Cards'])[1]")).click();
+        //  driver.findElement(By.xpath("//a[text()='Gift Cards']")).click();
         //        5-Birthday butonuna basin
-        driver.findElement(By.xpath("//img[@*='https://images-na.ssl-images-amazon.com/images/G/01/gift-certificates/consumer/2021/GCLP/Support/2x/Occ_Birthday_346x130.png']")).click();
+        driver.findElement(By.xpath("//a[@aria-label='Birthday gift cards']")).click();
 
         //        6-Best Seller bolumunden ilk urunu tiklayin
-        driver.findElement(By.xpath("(//img[@*='Amazon.com eGift Card'])[1]")).click();
+       // driver.findElement(By.xpath("(//img[@*='Amazon.com eGift Card'])[1]")).click();//bu da kullanilir
+        //list ile cozum
+        List<WebElement> bestSellerUrunleri = driver.findElements(By.xpath("//div[@id='acs-product-block-0']"));
+        bestSellerUrunleri.get(0).click();
+
         //        7-Gift card details'den 25$'i secin
         WebElement giftCard=driver.findElement(By.xpath("(//*[@class='a-button a-button-toggle'])[1]"));
         giftCard.click();
-        //List<WebElement> elementListesi=driver.findElements(By.id("gc-mini-picker-amount-1"));
+        // driver.findElement(By.xpath("//button[@value='25']")).click();
 
 
         //        8-Urun ucretinin 25$ oldugunu test edin
         String actualValue=giftCard.getText();
-        String urunUcreti="$ 25";
+        String urunUcreti="25$";
 
         if(actualValue.equals(urunUcreti))
             System.out.println("urun ucreti $25");
-        else System.out.println("gift card selected testi failed");
+        else System.out.println("gift card selected testi failed cunku gercek deger "
+                + actualValue + " beklenen deger " + urunUcreti +"'ine esit degil");
+        /*
+        8.taskin diger yontemi
+      =============================
+         WebElement actualUrunUcreti = driver.findElement(By.xpath("//span[.='$25.00']"));
+        String exceptedUrunUcreti = "25$";
+        if (actualUrunUcreti.getText().equals(exceptedUrunUcreti)) {
+            System.out.println(exceptedUrunUcreti + " = " + actualUrunUcreti.getText() + " .Test PASSED");
+        } else System.out.println(exceptedUrunUcreti + " != " + actualUrunUcreti.getText() + " .Test FAILED");
+         */
+
         //        9-sayfayi kapartin
+
+        driver.close();
 
 
 
