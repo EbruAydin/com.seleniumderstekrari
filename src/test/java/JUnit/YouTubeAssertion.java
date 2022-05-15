@@ -28,13 +28,17 @@ Asagidaki adlari kullanarak 3 test methodu olusturun ve gerekli testleri yapin
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("https://www.youtube.com/");
+        driver.findElement(By.xpath("//*[text()='Tümünü kabul et']")).click();
 
-        //handle cookies
+        /*
+        //handle cookies uppp uzun yol
         driver.findElement(By.xpath("(//a[@class='yt-simple-endpoint style-scope ytd-button-renderer'])[12]")).click();
         driver.findElement(By.xpath("(//span[@class='VfPpkd-vQzf8d'])[3]")).click();
         driver.findElement(By.xpath("(//span[@class='VfPpkd-vQzf8d'])[5]")).click();
         driver.findElement(By.xpath("(//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc qfvgSe tVK8Qc'])[2]")).click();
+         */
     }
+
 
     @AfterClass
     public static void tearDown(){
