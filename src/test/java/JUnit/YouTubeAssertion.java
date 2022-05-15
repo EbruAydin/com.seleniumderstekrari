@@ -74,6 +74,9 @@ Asagidaki adlari kullanarak 3 test methodu olusturun ve gerekli testleri yapin
          */
 
         //2.yol
-        Assert.assertFalse(driver.getTitle().equals("youtube"));
+        //Assert.assertFalse(driver.getTitle().equals("youtube"));
+
+        //3.yol
+        Assert.assertNotEquals("youtube",driver.getTitle());
     }
 }
