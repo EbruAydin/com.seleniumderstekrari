@@ -1,0 +1,22 @@
+===========================Alerts Notlari================================
+html alerts sag click yapabiliyorsak bunlar html alert'tir ve extra bir islem yapmaya gerek kalmadan handle edebiliriz
+ancak Js Alert'lara inspect yapilamaz ve bu nedenle extra isleme ihtiyac duyulur
+
+simple alert: bu basit alert ekranda bazi bilgiler veya uyarilar goruntuler. Ok denilerek kapatilir
+confirmation alert: bu onay uyarisi bir tur islem yapma izni ister. Alert onaylaniyorsa Ok, onaylanmiyorsa Cancel butonuna basilir/
+prompt Alert:Bu prompt uyarisi kullanicidan bazi bilgilerin girilmesini ister ve selenium webdriver metni sendKeys("input")kullanilarak girilebilir.
+
+//https://the-internet.herokuapp.com/javascript_alerts bu site uzerinden ornekleri yaptikbunu
+
+==============================Handle Alerts Mehodlari============================
+accept(): bir uyaridaki Ok'u tiklamak icin
+        driver.switchTo().alert().accept();
+
+dismiss(): uyaridaki cancel'i tiklamak icin
+            driver.switchTo().alert().dismiss();
+
+getText(): uyaridaki texti almak icin
+            driver.switchTo().alert().getText();
+
+sendKeys("Text"): uyari text kutusuna text gondermek icin
+                driver.switchTo().alert().sendKeys("Text");

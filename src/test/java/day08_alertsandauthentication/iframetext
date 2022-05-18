@@ -1,0 +1,25 @@
+
+
+
+=====================Iframe notlari==============================================
+
+bir websitesi icerisine yerlestirilmis baska websitelerine iframe denir
+ya da bir html icerisine yerlestirilmis baska html dokumanidir
+
+bir websayfasinda iframe varsa, Selenium onu dogrudan gormez.
+
+switch.to() method'u ile iframe'i GECMENIN 3 yolu vardir. yani locate etmenin 3 yolu :
+1-index ile
+driver.switchTo().frame(index of the frame)//index 0'dan baslar
+2-id veya name value ile
+driver.switchTo().frame(id of the frame);
+3-WebElement ile
+driver.switchTo().frame(WebElement of the frame);
+
+iframe'den CIKMAK icin 2 komut vardir:
+
+driver.switchTo().parentFrame(); 1'ust seviyedeki frame'e cikar
+driver.switchTo().defaultContent(); En ustteki frame'e cikmak icin kullanilir
+
+birden fazla iframe varsa gecislerde dikkatli olmak gerekir
+Gecisler her zaman basit OLMAYABILIR.
