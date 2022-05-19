@@ -73,7 +73,9 @@ public class C02_HandleIframe {
          */
 
         driver.switchTo().defaultContent();//ana sayfaya donmeyi saglar ve direk olarak iframe'den cikmis olur
+
         WebElement linkYaziElementi=driver.findElement(By.linkText("Elemental Selenium"));
+
         Assert.assertTrue(linkYaziElementi.isDisplayed());
         System.out.println(linkYaziElementi.getText());
 
