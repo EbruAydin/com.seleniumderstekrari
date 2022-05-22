@@ -14,14 +14,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class C02_HandleWindows {
-    // 1- amazon anasayfaya gidelim
-    // 2- url'in  amazon icerdigini test edelim
-    // 3- yeni bir pencere acip bestbuy ana sayfaya gidelim
-    // 4- title'in BestBuy icerdigini test edelim
-    // 5- ilk sayfaya donup sayfada Java aratalim
-    // 6- arama sonuclarinin Java icerdigini test edelim
-    // 7- yeniden bestbuy'in acik oldugu sayfaya gidelim
-    // 8- logonun gorundugunu test edelim
+        // 1- amazon anasayfaya gidelim
+        // 2- url'in  amazon icerdigini test edelim
+        // 3- yeni bir pencere acip bestbuy ana sayfaya gidelim
+        // 4- title'in BestBuy icerdigini test edelim
+        // 5- ilk sayfaya donup sayfada Java aratalim
+        // 6- arama sonuclarinin Java icerdigini test edelim
+        // 7- yeniden bestbuy'in acik oldugu sayfaya gidelim
+        // 8- logonun gorundugunu test edelim
 
     WebDriver driver;
 

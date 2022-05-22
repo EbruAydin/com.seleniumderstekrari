@@ -6,15 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.Select;
-import utilities.TestBase;
 import utilities.TestBaseClass;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GenelTekrar extends TestBaseClass {
@@ -44,15 +43,21 @@ public class GenelTekrar extends TestBaseClass {
     sepetteki urunlerle ekledigimiz urunlerin ayni oldugunu isim ve fiyat olarak dogrulayin
      */
 
+    static String fiyat1;
+    static String baslik1;
+    static String fiyat2;
+    static String baslik2;
 
     @Test
     public void test01() {
         //amazona gidin
         driver.get("https://www.amazon.com");
+
         //    Arama kutusunun solundaki dropdown menuyu handle edip listesini ekrana yazdirin
         WebElement searchBox = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
         Select obj = new Select(searchBox);
 
+        System.out.println("\n=======DropDown Menu Icerigi=========");
         obj.getOptions().stream().
                 collect(Collectors.toList()).
                 forEach(t -> System.out.println(t.getText()));
@@ -70,34 +75,42 @@ public class GenelTekrar extends TestBaseClass {
         Select obj = new Select(dropDown);
         obj.selectByIndex(10);
 
-        //    arama kutusuna iphone yazip aratin ve bulunan sonuc sayisini yazdirin
+        //arama kutusuna iphone yazip aratin
         //acttions denemesi yapildi
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         Actions actions = new Actions(driver);
         actions.click(searchBox).sendKeys("iphone" + Keys.ENTER).perform();
 
+        // bulunan sonuc sayisini yazdirin
+        System.out.println("\n=======ilk urun bilgileri=========");
+        WebElement sonuc = driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
+        String[] sonucSayisi = sonuc.getText().split(" ");
+        Arrays.stream(sonucSayisi).
+                limit(4).
+                skip(3).
+                forEach(t -> System.out.println("iphone icin sonuc sayisi = " + t));
+
         //    sonuc sayisi bildiren yazisinin iphone icerdigini test edin
         Assert.assertTrue(driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]")).
                 getText().
                 contains("iphone"));
-        //    ikinci urune relative locator kullanarak tiklayin
 
+        //    ikinci urune relative locator kullanarak tiklayin
         WebElement firstProduct = driver.findElement(By.xpath("(//a[@class='a-link-normal s-no-outline'])[1]"));
         WebElement secondProduct = driver.findElement(RelativeLocator.with(By.tagName("img")).below(firstProduct));
         actions.click(secondProduct).perform();
 
 
-
         //    urunun title'ini ve fiyaitni variable'a assign edip urunu sepete ekleyin
-        String FirstProductTitle = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
-        String FirstProductPrice = driver.findElement(By.xpath("(//span[@class='a-offscreen'])[2]")).getText();
+        baslik1 = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+        System.out.println("Ilk Urun Baslik : " + baslik1);
+        fiyat1 = driver.findElement(By.xpath("//span[@class='a-price a-text-price a-size-medium']")).getText();
+        System.out.println("Ilk Urun Fiyati : " + fiyat1);
 
         WebElement sepet = driver.findElement(By.xpath("//input[@id='add-to-cart-button']"));
         actions.click(sepet).perform();
 
-
     }
-
 
 
     @Test
@@ -112,10 +125,14 @@ public class GenelTekrar extends TestBaseClass {
         obj.selectByVisibleText("Baby");
 
         //    bebek puset aratip bulunan sonuc sayisini yazdirin
+        System.out.println("\n=======ikinci urun bilgileri=========");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Baby stroller" + Keys.ENTER);
-        WebElement sonuc=driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
-        String[]sonucSayisi=sonuc.getText().split(" ");
-        Arrays.stream(sonucSayisi).limit(4).skip(3).forEach(t-> System.out.println("sonuc sayisi = " + t));
+        WebElement sonuc = driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
+        String[] sonucSayisi = sonuc.getText().split(" ");
+        Arrays.stream(sonucSayisi).
+                limit(4).
+                skip(3).
+                forEach(t -> System.out.println("Baby stroller sonuc sayisi = " + t));
 
         //    sonuc yazsinin puset icerdigini test edin
         Assert.assertTrue(sonuc.getText().contains("stroller"));
@@ -127,43 +144,54 @@ public class GenelTekrar extends TestBaseClass {
         thirdProduct.click();
 
         //    title ve fiyat bilgilerini assign edelim ve sepete ekleyelim
+        baslik2 = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+        System.out.println("Ikinci urun baslik : " + baslik2);
 
-        WebElement productTitle2=driver.findElement(By.xpath("//span[@id='productTitle']"));
-        WebElement productPrice2= driver.findElement(By.xpath("(//span[@class='a-offscreen'])[2]"));
+        try {
+            fiyat2 = driver.findElement(By.xpath("//span[@class='a-price a-text-price a-size-medium']")).getText();
+            System.out.println("Ikinci Urun Fiyati : " + fiyat2);
+        } catch (Exception e) {
+            System.out.println("urun fiyati bulunamadi");
+        }
+
         WebElement sepet = driver.findElement(By.xpath("//input[@id='add-to-cart-button']"));
         sepet.click();
-    }
 
+    }
 
 
     @Test
     public void test04() {
         // sepetteki urunlerle ekledigimiz urunlerin ayni oldugunu isim ve fiyat olarak dogrulayin
-        WebElement goToCart=driver.findElement(By.id("sw-gtc"));
+        WebElement goToCart = driver.findElement(By.cssSelector("[href='/gp/cart/view.html?ref_=sw_gtc']"));
+        //https://www.amazon.com/gp/cart/view.html?ref_=sw_gtc
+        //https://www.amazon.com/gp/cart/view.html?ref_=sw_gtc
         goToCart.click();
 
-        List<WebElement> titleList=driver.findElements(By.className("a-truncate-cut"));
-
-        titleList.
-                stream().
-                forEach(t-> System.out.println(t.getText()));
 
 
-        List<WebElement> priceList=driver.findElements(By.className("a-price-whole"));
-        priceList.
-                stream().
-                forEach(t-> System.out.println(t.getText()));
+        System.out.println("\n=======sepetteki urunlerin baslik bilgileri=========");
+        String sepettekiIlkUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-product-title'])[1]")).getText();
+        System.out.println(sepettekiIlkUrunBaslik);
+        String sepettekiIkinciUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-product-title'])[2]")).getText();
+        System.out.println(sepettekiIkinciUrunBaslik);
+
+        Assert.assertEquals(sepettekiIlkUrunBaslik, baslik2);
+        Assert.assertEquals(sepettekiIkinciUrunBaslik, baslik1);
+
+        System.out.println("\n=======sepetteki urunlerin fiyat bilgileri=========");
+        //String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//div[@class='a-column a-span2 a-text-right sc-item-right-col a-span-last'])[1]")).getText();
+        //String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//span[@class='a-price sc-product-price'])[1]")).getText();
+        String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//p[@class='a-spacing-mini'])[1]")).getText();
+        System.out.println(sepettekiIlkUrunFiyat);
+       // String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//div[@class='a-column a-span2 a-text-right sc-item-right-col a-span-last'])[2]")).getText();
+        //String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//span[@class='a-price sc-product-price'])[2]")).getText();
+        String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//p[@class='a-spacing-mini'])[2]")).getText();
+        System.out.println(sepettekiIkinciUrunFiyat);
 
 
-
-
-        /*
-        String sepetTekiIlkUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[1]")).getText();
-        String sepetTekiIkinicUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[2]")).getText();
-
-        String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//(//span[@class='a-price-whole'])[2])")).getText();
-        String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//(//span[@class='a-price-whole'])[3])")).getText();
-         */
+        Assert.assertEquals(fiyat2, sepettekiIlkUrunFiyat);
+        Assert.assertEquals(fiyat1,sepettekiIkinciUrunFiyat);
 
 
     }
