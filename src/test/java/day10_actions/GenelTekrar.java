@@ -147,12 +147,8 @@ public class GenelTekrar extends TestBaseClass {
         baslik2 = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
         System.out.println("Ikinci urun baslik : " + baslik2);
 
-        try {
             fiyat2 = driver.findElement(By.xpath("//span[@class='a-price a-text-price a-size-medium']")).getText();
             System.out.println("Ikinci Urun Fiyati : " + fiyat2);
-        } catch (Exception e) {
-            System.out.println("urun fiyati bulunamadi");
-        }
 
         WebElement sepet = driver.findElement(By.xpath("//input[@id='add-to-cart-button']"));
         sepet.click();
@@ -164,28 +160,24 @@ public class GenelTekrar extends TestBaseClass {
     public void test04() {
         // sepetteki urunlerle ekledigimiz urunlerin ayni oldugunu isim ve fiyat olarak dogrulayin
         WebElement goToCart = driver.findElement(By.cssSelector("[href='/gp/cart/view.html?ref_=sw_gtc']"));
-        //https://www.amazon.com/gp/cart/view.html?ref_=sw_gtc
-        //https://www.amazon.com/gp/cart/view.html?ref_=sw_gtc
+        //https://www.amazon.com/gp/cart/view.html?ref_=sw_gtc ==>bu site uzerinden calisilmistir.
         goToCart.click();
 
 
+        List<WebElement> basliklar=driver.findElements(By.xpath("//span[@class='a-truncate-cut']"));
 
         System.out.println("\n=======sepetteki urunlerin baslik bilgileri=========");
-        String sepettekiIlkUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-product-title'])[1]")).getText();
-        System.out.println(sepettekiIlkUrunBaslik);
-        String sepettekiIkinciUrunBaslik=driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-product-title'])[2]")).getText();
-        System.out.println(sepettekiIkinciUrunBaslik);
 
-        Assert.assertEquals(sepettekiIlkUrunBaslik, baslik2);
-        Assert.assertEquals(sepettekiIkinciUrunBaslik, baslik1);
+        for (int i = 0; i < basliklar.size(); i++) {
+            System.out.println("Sepetteki Baslikar : " + basliklar.get(i).getText());
+        }
+        Assert.assertEquals(basliklar.get(0).getText(), baslik2);
+        Assert.assertEquals(basliklar.get(1).getText(), baslik1);
 
         System.out.println("\n=======sepetteki urunlerin fiyat bilgileri=========");
-        //String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//div[@class='a-column a-span2 a-text-right sc-item-right-col a-span-last'])[1]")).getText();
-        //String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//span[@class='a-price sc-product-price'])[1]")).getText();
+
         String sepettekiIlkUrunFiyat=driver.findElement(By.xpath("(//p[@class='a-spacing-mini'])[1]")).getText();
         System.out.println(sepettekiIlkUrunFiyat);
-       // String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//div[@class='a-column a-span2 a-text-right sc-item-right-col a-span-last'])[2]")).getText();
-        //String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//span[@class='a-price sc-product-price'])[2]")).getText();
         String sepettekiIkinciUrunFiyat=driver.findElement(By.xpath("(//p[@class='a-spacing-mini'])[2]")).getText();
         System.out.println(sepettekiIkinciUrunFiyat);
 
